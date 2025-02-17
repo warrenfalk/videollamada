@@ -24,6 +24,7 @@
             allowUnfree = true;
           };
         };
+        prisma-engines = (import ./nix/prisma-engines { inherit pkgs; });
         addCorepack = import "${nixpkgs}/pkgs/development/web/nodejs/corepack.nix";
         nodejs = pkgs.nodejs_20;
         corepack-enable = pkgs.hiPrio (pkgs.callPackage addCorepack { nodejs = nodejs; });
@@ -40,9 +41,18 @@
               pkgs.jq
               # needed for node-gyp
               pkgs.python3
+              pkgs.openssl
+              prisma-engines
               #pkgs.imagemagick
               #pkgs.openjdk11 # needed for firebase realtime db emulation
             ];
+
+            env = {
+              PRISMA_FTM_BINARY = "${prisma-engines}/bin/prisma-fmt";
+              PRISMA_QUERY_ENGINE_LIBRARY = "${prisma-engines}/lib/libquery_engine.node";
+              PRISMA_QUERY_ENGINE_BINARY = "${prisma-engines}/bin/query-engine";
+              PRISMA_SCHEMA_ENGINE_BINARY = "${prisma-engines}/bin/schema-engine";
+            };
 
             shellHook = ''
               export PS1="(node-env) $PS1"
