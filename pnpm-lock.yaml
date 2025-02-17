@@ -8,6 +8,21 @@ dependencies:
   '@prisma/client':
     specifier: ^6.3.1
     version: 6.3.1(prisma@6.3.1)(typescript@5.7.3)
+  '@tanstack/react-query':
+    specifier: ^5.66.5
+    version: 5.66.5(react@19.0.0)
+  '@trpc/client':
+    specifier: 11.0.0-rc.768
+    version: 11.0.0-rc.768(@trpc/server@11.0.0-rc.768)(typescript@5.7.3)
+  '@trpc/next':
+    specifier: 11.0.0-rc.768
+    version: 11.0.0-rc.768(@tanstack/react-query@5.66.5)(@trpc/client@11.0.0-rc.768)(@trpc/react-query@11.0.0-rc.768)(@trpc/server@11.0.0-rc.768)(next@15.1.7)(react-dom@19.0.0)(react@19.0.0)(typescript@5.7.3)
+  '@trpc/react-query':
+    specifier: 11.0.0-rc.768
+    version: 11.0.0-rc.768(@tanstack/react-query@5.66.5)(@trpc/client@11.0.0-rc.768)(@trpc/server@11.0.0-rc.768)(react-dom@19.0.0)(react@19.0.0)(typescript@5.7.3)
+  '@trpc/server':
+    specifier: 11.0.0-rc.768
+    version: 11.0.0-rc.768(typescript@5.7.3)
   next:
     specifier: 15.1.7
     version: 15.1.7(react-dom@19.0.0)(react@19.0.0)
@@ -20,6 +35,9 @@ dependencies:
   react-dom:
     specifier: ^19.0.0
     version: 19.0.0(react@19.0.0)
+  zod:
+    specifier: ^3.24.2
+    version: 3.24.2
 
 devDependencies:
   '@eslint/eslintrc':
@@ -570,6 +588,82 @@ packages:
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
     dependencies:
       tslib: 2.8.1
+    dev: false
+
+  /@tanstack/query-core@5.66.4:
+    resolution: {integrity: sha512-skM/gzNX4shPkqmdTCSoHtJAPMTtmIJNS0hE+xwTTUVYwezArCT34NMermABmBVUg5Ls5aiUXEDXfqwR1oVkcA==}
+    dev: false
+
+  /@tanstack/react-query@5.66.5(react@19.0.0):
+    resolution: {integrity: sha512-D9aABj3/aFeNmifsdllh5O3hPyA8gUnZ1jAV8MjODQ7blirfAyGed9NjAnm8rgEdr1wChyjTT738ij3vY0EREQ==}
+    peerDependencies:
+      react: ^18 || ^19
+    dependencies:
+      '@tanstack/query-core': 5.66.4
+      react: 19.0.0
+    dev: false
+
+  /@trpc/client@11.0.0-rc.768(@trpc/server@11.0.0-rc.768)(typescript@5.7.3):
+    resolution: {integrity: sha512-eZNNjQQhP6nsr1tniI/84P1SKyh6BjvKNMq0vXKnKFV57El27XTfn6wfmdLNcyL3f24ZmDxm/sMxXlzM+zaG/g==}
+    peerDependencies:
+      '@trpc/server': 11.0.0-rc.768+de6335c47
+      typescript: '>=5.7.2'
+    dependencies:
+      '@trpc/server': 11.0.0-rc.768(typescript@5.7.3)
+      typescript: 5.7.3
+    dev: false
+
+  /@trpc/next@11.0.0-rc.768(@tanstack/react-query@5.66.5)(@trpc/client@11.0.0-rc.768)(@trpc/react-query@11.0.0-rc.768)(@trpc/server@11.0.0-rc.768)(next@15.1.7)(react-dom@19.0.0)(react@19.0.0)(typescript@5.7.3):
+    resolution: {integrity: sha512-e+m17Qzw5vb+XfdEwg2jMc5Ejt6Nc2imG/8JyevfGcqFEiHTQosPj5ASOlVJXV5X2P/F+e0oljWb6/vc6xfFWw==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.59.15
+      '@trpc/client': 11.0.0-rc.768+de6335c47
+      '@trpc/react-query': 11.0.0-rc.768+de6335c47
+      '@trpc/server': 11.0.0-rc.768+de6335c47
+      next: '*'
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+      typescript: '>=5.7.2'
+    peerDependenciesMeta:
+      '@tanstack/react-query':
+        optional: true
+      '@trpc/react-query':
+        optional: true
+    dependencies:
+      '@tanstack/react-query': 5.66.5(react@19.0.0)
+      '@trpc/client': 11.0.0-rc.768(@trpc/server@11.0.0-rc.768)(typescript@5.7.3)
+      '@trpc/react-query': 11.0.0-rc.768(@tanstack/react-query@5.66.5)(@trpc/client@11.0.0-rc.768)(@trpc/server@11.0.0-rc.768)(react-dom@19.0.0)(react@19.0.0)(typescript@5.7.3)
+      '@trpc/server': 11.0.0-rc.768(typescript@5.7.3)
+      next: 15.1.7(react-dom@19.0.0)(react@19.0.0)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      typescript: 5.7.3
+    dev: false
+
+  /@trpc/react-query@11.0.0-rc.768(@tanstack/react-query@5.66.5)(@trpc/client@11.0.0-rc.768)(@trpc/server@11.0.0-rc.768)(react-dom@19.0.0)(react@19.0.0)(typescript@5.7.3):
+    resolution: {integrity: sha512-9ATcL+jq1dQMDA+Egf0BHx8bf0/2t2Ng+3x338N+y9BvYvxa20vXtlZzv9IogXjaC8dUdKsGCu5MqGy9XaPnmA==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.62.8
+      '@trpc/client': 11.0.0-rc.768+de6335c47
+      '@trpc/server': 11.0.0-rc.768+de6335c47
+      react: '>=18.2.0'
+      react-dom: '>=18.2.0'
+      typescript: '>=5.7.2'
+    dependencies:
+      '@tanstack/react-query': 5.66.5(react@19.0.0)
+      '@trpc/client': 11.0.0-rc.768(@trpc/server@11.0.0-rc.768)(typescript@5.7.3)
+      '@trpc/server': 11.0.0-rc.768(typescript@5.7.3)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      typescript: 5.7.3
+    dev: false
+
+  /@trpc/server@11.0.0-rc.768(typescript@5.7.3):
+    resolution: {integrity: sha512-+2du6a3uZEcQBj1OdT6EfWxa6dw/vqBG37aNR7YReTJ/UOMnheOmI/bskHkbK+x/kAcHPj8YN+/xc01QJDxwXQ==}
+    peerDependencies:
+      typescript: '>=5.7.2'
+    dependencies:
+      typescript: 5.7.3
     dev: false
 
   /@types/estree@1.0.6:
@@ -3312,3 +3406,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zod@3.24.2:
+    resolution: {integrity: sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==}
+    dev: false
