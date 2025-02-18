@@ -25,6 +25,7 @@
           };
         };
         prisma-engines = (import ./nix/prisma-engines { inherit pkgs; });
+        postgresql-supabase = pkgs.postgresql_15;
         addCorepack = import "${nixpkgs}/pkgs/development/web/nodejs/corepack.nix";
         nodejs = pkgs.nodejs_20;
         corepack-enable = pkgs.hiPrio (pkgs.callPackage addCorepack { nodejs = nodejs; });
@@ -43,8 +44,13 @@
               pkgs.python3
               pkgs.openssl
               prisma-engines
+              postgresql-supabase
               #pkgs.imagemagick
               #pkgs.openjdk11 # needed for firebase realtime db emulation
+              (pkgs.writeShellScriptBin "pg-console" ''
+                set -euo pipefail
+                ${postgresql-supabase}/bin/psql --dbname "$DATABASE_URL_DIRECT" "$@"
+              '')
             ];
 
             env = {

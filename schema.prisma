@@ -7,17 +7,17 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Room {
+model room {
   id          String       @id
   createdAt   DateTime     @default(now())
-  connections Connection[]
+  connections connection[]
 }
 
-model Connection {
+model connection {
   id        Int      @id @default(autoincrement())
   cookie    String
   roomId    String
-  room      Room     @relation(fields: [roomId], references: [id])
+  room      room     @relation(fields: [roomId], references: [id])
   createdAt DateTime @default(now())
 
   @@unique([roomId, cookie])
